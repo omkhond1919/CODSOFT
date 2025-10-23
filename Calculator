@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Calculator - Om Khond</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    .calculator {
+      background: #222;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      width: 300px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .display {
+      background: #000;
+      color: #0f0;
+      font-size: 2em;
+      text-align: right;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 5px;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #555;
+    }
+
+    .operator {
+      background: #ff9500;
+    }
+
+    .operator:hover {
+      background: #ffb84d;
+    }
+
+    .equal {
+      background: #00a000;
+      grid-column: span 2;
+    }
+
+    .equal:hover {
+      background: #00c000;
+    }
+
+    .clear {
+      background: #d11a2a;
+      grid-column: span 2;
+    }
+
+    .clear:hover {
+      background: #ff1a40;
+    }
+
+    .author {
+      margin-top: 15px;
+      color: #aaa;
+      font-size: 0.9em;
+      font-style: italic;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button class="clear">C</button>
+      <button class="operator">/</button>
+      <button class="operator">*</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button class="operator">-</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button class="operator">+</button>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>0</button>
+      <button>.</button>
+      <button class="equal">=</button>
+    </div>
+
+   
+    <div class="author">Created by Om Khond</div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+    const buttons = document.querySelectorAll('button');
+    let currentInput = '';
+    let operator = '';
+    let firstNumber = '';
+    let secondNumber = '';
+
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const value = button.textContent;
+
+        if (button.classList.contains('clear')) {
+          
+          currentInput = '';
+          operator = '';
+          firstNumber = '';
+          secondNumber = '';
+          display.textContent = '0';
+        } 
+        else if (button.classList.contains('operator')) {
+          if (firstNumber === '') {
+            firstNumber = currentInput;
+            operator = value;
+            currentInput = '';
+          } else {
+            operator = value; // change operator if pressed again
+          }
+        } 
+        else if (button.classList.contains('equal')) {
+          secondNumber = currentInput;
+
+          if (firstNumber !== '' && secondNumber !== '' && operator !== '') {
+            let result = 0;
+
+            
+            if (operator === '+') result = parseFloat(firstNumber) + parseFloat(secondNumber);
+            else if (operator === '-') result = parseFloat(firstNumber) - parseFloat(secondNumber);
+            else if (operator === '*') result = parseFloat(firstNumber) * parseFloat(secondNumber);
+            else if (operator === '/') {
+              if (parseFloat(secondNumber) === 0) {
+                display.textContent = 'Error';
+                return;
+              } else {
+                result = parseFloat(firstNumber) / parseFloat(secondNumber);
+              }
+            }
+
+            display.textContent = result;
+            currentInput = result;
+            firstNumber = '';
+            secondNumber = '';
+            operator = '';
+          }
+        } 
+        else {
+          
+          if (currentInput.length < 12) { 
+            currentInput += value;
+            display.textContent = currentInput;
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
