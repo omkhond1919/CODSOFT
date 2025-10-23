@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Om Khond | Creative Developer</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e1f29, #2d2e3a, #3e3f51);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.5em;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 1px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3em;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: slideIn 1s ease;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ccc;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    .hero button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      color: #fff;
+      padding: 15px 35px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(0, 114, 255, 0.5);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9em;
+      color: #aaa;
+      text-align: center;
+      width: 100%;
+    }
+
+    footer a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3em;
+      }
+
+      .hero p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>Om Khond</header>
+
+  <section class="hero">
+    <h1>Welcome to My World</h1>
+    <p>
+      I’m <strong>Om Khond</strong>, a passionate web developer who loves building interactive and visually appealing digital experiences. Let's create something amazing together!
+    </p>
+    <button onclick="alert('Thank you for visiting, Om Khond appreciates you!')">Get Started</button>
+  </section>
+
+  <footer>
+    © 2025 Om Khond | Designed with ❤️ by <a href="#">Om Khond</a>
+  </footer>
+
+</body>
+</html>
+`
